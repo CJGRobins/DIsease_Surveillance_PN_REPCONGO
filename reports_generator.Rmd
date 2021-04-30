@@ -1,0 +1,43 @@
+---
+title: "Weekly Automatic Report on AFP, Yellow Fever and Measles Surveillance in Pointe Noire"
+author: "Dr Callum Robins MBBS MSc"
+date: "`r Sys.Date()`"
+fontsize: 12pt
+output: pdf_document
+---
+
+This is an automated pdf generated from the data stored on the google sheets server (or later the Pointe Noire server in the district headquarters). Initially this is in English but I hope it can be in French soon for development to be taken over.
+
+The data I want to include is a summary table of disease cases reported by district, individual cases mapped within the last month, health district heatmaps for the last month with SIR, and finally some admin quality checks for each district.
+
+The idea is that this data will initially be handled by a google sheet by then migrated to more permanent server running ODK Aggregate or ODK Central.
+
+If there is a need for a RShiny App for daily updates to data this can be developed with time to make a dashboard, however again this will work better with a full server setup which will require a full time IT presence to maintain.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) #This code is just to setup the R
+library(tidyverse)
+library(kableExtra)
+library(googlesheets4)
+library(tinytex)
+library(leaflet)
+library(tmap)
+library(cowplot)
+library(plotly)
+library(mapview)
+
+
+```
+
+
+
+```{r, include=FALSE}
+#afp_master <- read_sheet("https://docs.google.com/spreadsheets/d/1tcPFMdnO3Z_DGnWROzIGAnohcq8j7_iBy1rLUY1XxdY/edit#gid=0")
+#measles_master <- read_sheet("https://docs.google.com/spreadsheets/d/1ZctyetGxcd21GDxHKQtddpv9aoV_TrLx2fdbnSqgyRA/edit#gid=0")
+yf_master <- read_sheet("https://docs.google.com/spreadsheets/d/1hvPRDpXP9U4lKg6ZkEh7f8zPJcerFiHZgkmiheoCWZI/edit#gid=0")
+
+
+
+```
+
+
